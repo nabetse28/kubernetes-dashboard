@@ -41,10 +41,20 @@ kubectl get all -n kubernetes-dashboard
 kubectl apply -f ./admin-user.yaml
 ```
 
-5. Get admin user token
+```bash
+kubectl apply -f ./admin-user2.yaml
+```
+
+1. Get admin user token (old version)
 
 ```bash
 kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret |grep admin-user-token | awk '{print $1}')
+```
+
+6. Get admin user token (new versions)
+
+```bash
+kubectl -n kubernetes-dashboard create token admin-user
 ```
 
 6. Run kubernetes proxy
